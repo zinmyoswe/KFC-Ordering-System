@@ -57,8 +57,15 @@
         </div>
         
         <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" id="password" data-toggle="password" id="password">
+      
         </div>
+        <!-- -----------------password hide and seen --------------------- -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+        <script type="text/javascript">
+       $("#password").password('toggle');
+        </script>
+        <!-- -----------------password hide and seen --------------------- -->
        
      	<hr>
         

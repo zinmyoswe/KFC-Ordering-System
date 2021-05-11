@@ -1,4 +1,7 @@
-<?php include('../01header.php'); ?>
+<?php 
+	session_start();
+	include('../01header.php'); 
+?>
 <?php
  include("../confs/config.php"); 
  $id = $_GET['id'];
@@ -6,10 +9,13 @@
  $row = mysqli_fetch_assoc($result); 
 
  echo $row['order_type_name'];
+ $_SESSION['order_type_name'] = $row['order_type_name'];
 ?>
 
 
 <a href="index.php" title="">Back</a><br>
+
+<?php echo $_SESSION['order_type_name'] ?>
 
 
 <?php

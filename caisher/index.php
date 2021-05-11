@@ -1,4 +1,7 @@
 <?php include('../01header.php'); ?>
+
+
+<img src="../image/homekfc.jpg" >
 <?php
     
     session_start();

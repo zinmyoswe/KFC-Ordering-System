@@ -57,19 +57,18 @@
             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Apps">
             <?php 
                   include('../confs/config.php');
-                    $sql_p = "SELECT f.*,c.cat_id,c.cat_name,m.menu_id, m.menu_name from food f 
+                    $sql_p = "SELECT f.*,c.cat_id,c.cat_name,s.sub_id, s.sub_name from food f 
                 LEFT JOIN categories c 
                 ON c.cat_id = f.category_id
-                LEFT JOIN menu m 
-                ON m.menu_id = f.menu_id 
-                where f.menu_id = 1";
+                LEFT JOIN sub_category s 
+                ON s.sub_id = f.sub_id ";
                     $run_p = mysqli_query($conn,$sql_p);
                     $count_p = mysqli_num_rows($run_p);       
                 ?>
 
 
               <i class="fal fa-soup nav-icon"></i>
-              <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Manage Food <span class="badge badge-info badge-pill ml-1"><?php echo $count_p; ?></span></span>
+              <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Manage Menu <span class="badge badge-info badge-pill ml-1"><?php echo $count_p; ?></span></span>
             </a>
 
             <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
