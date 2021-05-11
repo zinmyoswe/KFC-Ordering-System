@@ -10,12 +10,14 @@
 
  echo $row['order_type_name'];
  $_SESSION['order_type_name'] = $row['order_type_name'];
+
 ?>
 
 
 <a href="index.php" title="">Back</a><br>
 
 <?php echo $_SESSION['order_type_name'] ?>
+<?php echo $_SESSION['firstname'] ?>
 
 
 <?php

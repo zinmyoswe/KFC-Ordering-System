@@ -20,6 +20,7 @@ $row = mysqli_fetch_assoc($run);
 
 <h1>Caisher view</h1>
 <h5>Welcome <?php echo $row['firstname']; ?></h5>
+<?php $_SESSION['firstname'] = $row['firstname']; ?>
 
 <a href="../logout.php" title="">Logout</a>
 
