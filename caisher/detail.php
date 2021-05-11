@@ -29,7 +29,7 @@
                     $cat_id = $row['category_id'];
                     $food_name = $row['food_name'];
                     $menu = $row['menu'];
-                    // $menu_name = $row['menu_name'];
+                    $price = $row['price'];
                     $created_date = $row['created_date'];
 
                     $checked_arr = explode(",",$row['menu']);
@@ -41,7 +41,26 @@
          
                 <p><?php echo $food_name ?></p>
                 <p style="color : grey"><?php echo $row['description'] ?></p>
-                <p><?php echo $row['price'] ?> MMK</p>
+                <p>
+                     <?php
+                          include('../confs/config.php');
+                          $sql_dis = mysqli_query($conn,"SELECT * FROM discount 
+                            LEFT JOIN food ON discount.food_id = food.food_id
+                            WHERE food.food_id = '$id'");
+                          $result_dis = mysqli_fetch_assoc($sql_dis);
+                           $percentage = $result_dis['percentage'];
+                           $discount_id = $result_dis['discount_id'];
+                          ?>
+                          <?php if( $discount_id == 0){ ?>
+                               <h style="font-family: Arial; font-size: 15px; color: ;"><?php echo $price ?>MMK</h>
+                          <?php }else{?>
+                          <?php
+                            $selling_price = $price-($price*($percentage/100))
+                          ?>
+                          <span style="text-decoration: line-through; color: #DC3545; "><?php echo $price ?> MMK</span>
+                          <?php echo $selling_price; ?> MMK
+                          <?php } ?>
+                </p>
 
    
 
