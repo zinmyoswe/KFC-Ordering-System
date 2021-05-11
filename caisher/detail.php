@@ -14,6 +14,7 @@
 
                 $id = $_GET['id'];
  				 
+    			$checked_arr = array();
 
                 $query = "SELECT f.*,c.cat_id,c.cat_name from food f 
                 LEFT JOIN categories c 
@@ -31,6 +32,9 @@
                     // $menu_name = $row['menu_name'];
                     $created_date = $row['created_date'];
 
+                    $checked_arr = explode(",",$row['menu']);
+
+                  
                 ?>
                 
                 	<img src="../admin/cover/<?php echo $row['cover'] ?>" width="400">
@@ -39,7 +43,21 @@
                 <p style="color : grey"><?php echo $row['description'] ?></p>
                 <p><?php echo $row['price'] ?> MMK</p>
 
-                <p><?php echo $menu ?></p>
+   
+
+                <?php
+                	  // Create checkboxes
+	    $languages_arr = array("Original Recipe","Hot and Spicy","Mixed");
+	    foreach($languages_arr as $language){
+	      
+	      $checked = "";
+	      if(in_array($language,$checked_arr)){
+	        $checked = "checked";
+	        echo '<input type="radio" class="form-check-input" name="lang" value="'.$language.'" '.$checked.' id="lang'.$language.'"> '.$language.' <br/>';
+	      }
+	   
+	  	}
+                ?>
 
         
 
