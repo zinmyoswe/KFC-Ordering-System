@@ -1,37 +1,56 @@
 <?php
  error_reporting(0);
  session_start();
- require_once 'confs/dbconfig.php';
+ require_once 'confs/config.php';
 
  if(isset($_POST['btn-login']))
  {
-  $user_email = trim($_POST['user_email']);
-  $user_password = trim($_POST['password']);
-  
+  $email = $_POST['email'];
+  $password = $_POST['password'];  
  
   
-  try
-  { 
   
-   $stmt = $db_con->prepare("SELECT * FROM staff WHERE email=:email");
-   $stmt->execute(array(":email"=>$user_email));
-   $row = $stmt->fetch(PDO::FETCH_ASSOC);
-   $count = $stmt->rowCount();
    
-   if($row['password']){
-    
-    echo "ok"; // log in
-    $_SESSION['user_session'] = $row['staff_id'];
-   }
-   else{
-    
-    echo "email or password does not exist."; // wrong details 
-   }
-    
-  }
-  catch(PDOException $e){
-   echo $e->getMessage();
-  }
+   $sql = "SELECT * FROM staff WHERE password='$password' AND email='$email'";
+
+        $run = mysqli_query($conn,$sql);
+
+        $check_customer = mysqli_num_rows($run);
+
+
+
+        if($check_customer == 0){
+
+          echo "
+          
+                
+                Incorrect email and password!!
+           
+        ";
+          exit();
+        }
+
+         $sel_customer = "SELECT * FROM staff WHERE email='$email'";
+
+      $run = mysqli_query($conn,$sel_customer);
+
+      $row = mysqli_fetch_array($run);
+
+        if($check_customer>0){
+
+          $_SESSION['user_session'] = $row['staff_id'];
+          $_SESSION['email']=$email;
+          $_SESSION['id']=$row['id'];
+        // echo "<script>alert('Login successfully!!')</script>";
+        echo "<script>window.open('home.php?s=gxio29ak','_self')</script>";
+        }
+        else{
+           $_SESSION['email']=$email;
+           $_SESSION['id']=$row['id'];
+        // echo "<script>alert('Login successfully!!')</script>";
+        echo "<script>window.open('home.php?s=gxio29ak','_self')</script>";
+
+        }
  }
 
 ?>

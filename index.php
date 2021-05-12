@@ -52,12 +52,12 @@
         </div>
         
         <div class="form-group">
-        <input type="email" class="form-control" placeholder="Email address" name="user_email" id="user_email">
+        <input type="email" class="form-control" placeholder="Email address" name="email" id="user_email">
         <span id="check-e"></span>
         </div>
         
         <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" name="password" id="password" data-toggle="password" id="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" id="password" data-toggle="password">
       
         </div>
         <!-- -----------------password hide and seen --------------------- -->

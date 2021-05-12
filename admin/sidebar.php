@@ -559,6 +559,15 @@
             </a>
           </li>
 
+          <li class="nav-item ">
+            <a class="js-nav-tooltip-link nav-link " href="../logout.php" title="" data-placement="left" data-original-title="Welcome page">
+              <i class="tio-visible-outlined nav-icon"></i>
+              <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Logout</span>
+            </a>
+          </li>
+
+         
+
           <li class="nav-item">
             <small class="nav-subtitle" title="Layouts">Layouts</small>
             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
