@@ -9,6 +9,13 @@
    include("../confs/config.php");
 ?>
 
+<style type="text/css">
+	a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+</style>
+
 <?php if($d == 'x5sdd28ka'){ ?>
 <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script> 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -179,9 +186,22 @@ Toast.fire({
                 echo '</div>';
                 echo '<div class="col-lg-2">';
                
-                echo ''.$quantity.'&nbsp;<a class="button [secondary success alert]" style="padding:5px;" href="update-cart.php?action=add&id='.$food_id.'">+</a>&nbsp;<a class="button alert" style="padding:5px;" href="update-cart.php?action=remove&id='.$food_id.'">-</a>
+                echo ''.$quantity.'&nbsp;<a class="button [secondary success alert]" style="padding:5px;" href="update-cart.php?action=add&id='.$food_id.'">+</a>';
+
+                if($quantity == 1){
+                	  echo '
+                &nbsp;<a class="button alert" style="padding:5px;" href="delete-single-cart.php?id='.$food_id.'"" >
+                	<span class="fal fa-trash"></span>
+                </a>
                   </div>';
 
+                }else{
+                	  echo '
+                &nbsp;<a class="button alert" style="padding:5px;" href="update-cart.php?action=remove&id='.$food_id.'">-</a>
+                  </div>';
+
+                }
+              
                 echo '<div class="col-lg-1"></div>';
                 echo '<div class="col-lg-2">';
                 if( $discount_id == 0){
@@ -200,10 +220,10 @@ Toast.fire({
               }
 
               
-                   $sql2 = "INSERT INTO cart(customer,product_id,color,size,created_date)
-                   VALUES('$email','$product_id','$value_c','$value_s',NOW())";
+              //      $sql2 = "INSERT INTO cart(customer,product_id,color,size,created_date)
+              //      VALUES('$email','$product_id','$value_c','$value_s',NOW())";
 
-              $run2=mysqli_query($mysqli,$sql2);
+              // $run2=mysqli_query($mysqli,$sql2);
               
 
              
@@ -219,18 +239,27 @@ Toast.fire({
           <a href="delete-cart.php" class="button alert">Empty Cart</a>';
 
           echo '
-          <a href="menu_list.php" style="margin-right: 8px">Continue Shopping</a>
-          <a href="checkout.php" class="btn btn-dark">Checkout <i class="fa fa-arrow-right" style="width: 60px;"></i></a>';
+          <a href="menu_list.php" style="margin-right: 8px">Continue Shopping</a><br><br>
+
+          <a href="checkout.php" class="btn btn-dark">Pay Cash <i class="fa fa-arrow-right" style="width: 60px;"></i></a>
+          <a href="checkout.php" class="btn btn-dark">Pay Cash quick <i class="fa fa-arrow-right" style="width: 60px;"></i></a>
+          <a href="checkout.php" class="btn btn-dark">Pay Card <i class="fa fa-arrow-right" style="width: 60px;"></i></a>
+          <a href="checkout.php" class="btn btn-dark">Gift Voucher <i class="fa fa-arrow-right" style="width: 60px;"></i></a>
+
+          ';
+
 
           echo ' </div>
             <div class="col-md-3">';
 
-          echo '<p>Subtotal : $'.$total.'</p>';
-          echo '<p>Subtotal : $'.$tt.'</p>';
+          echo '<p>Subtotal : '.$total.' MMK</p>';
+          echo '<p>Discount : '.$tt.'MMK</p>';
 
           echo '<p>Qty : '.$itemqty.'</p>';
-          echo '<p>Tax(5%) : $'.$tax.'</p>';
-          echo '<p><b>Total :  $'.$finaltotal.'</b></p>';
+          echo '<p>Tax(5%) : '.$tax.' MMK</p>';
+
+          echo '<p>Payment : '."0".' MMK</p>';
+          echo '<p><b>Balance :  $'.$finaltotal.' MMK</b></p>';
 
       
 
@@ -247,7 +276,7 @@ Toast.fire({
 
         else {
 
-   
+
 
           echo "<div class='alert alert-dark'><span class='fa fa-exclamation'> </span> You have no items in cart</div><br>
 

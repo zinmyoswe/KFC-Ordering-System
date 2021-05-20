@@ -73,6 +73,8 @@ if($_SESSION['cart'][$food_id] == 0){
 
 
 
+
+
 // echo "<script>window.open('cart.php','_self')</script>";
 echo "<script>window.open('cart.php','_self')</script>";
 
