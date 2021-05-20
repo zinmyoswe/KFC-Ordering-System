@@ -4,6 +4,8 @@
 	include('../01header.php'); 
   include('nav.php');
   $s = $_GET['s'];
+  $id = $_GET['id'];
+  echo $id;
 ?>
 
 <?php echo $_SESSION['order_type_name'] ?>
@@ -32,7 +34,7 @@ Toast.fire({
   icon: 'success',
   title: 'Successfully added to cart'
 }).then(function() {
-            window.location = "sub_list.php";
+            window.location = "sub_list.php?id=<?php echo $id ?>";
         });     
           </script>
 <?php }?>
@@ -52,6 +54,14 @@ Toast.fire({
  </a>
  <?php endwhile; ?>
 <br>
+
+<div class="container">
+  <div class="row">
+  
+  
+
+    
+
  <?php 
                 include('../confs/config.php');
 
@@ -74,6 +84,7 @@ Toast.fire({
                     $created_date = $row['created_date'];
 
                 ?>
+                <div class="col-lg-6">
 
                 <a href="detail.php?id=<?php echo $row['food_id'] ?>">
                 	<img src="../admin/cover/<?php echo $row['cover'] ?>" width="200">
@@ -100,5 +111,12 @@ Toast.fire({
                           <?php echo $selling_price; ?> MMK
                           <?php } ?>
                     </p>
-
+                       </div>
              <?php } ?>
+
+          
+    
+  </div>
+</div>
+
+ 
