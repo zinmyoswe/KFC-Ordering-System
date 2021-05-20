@@ -1,6 +1,7 @@
 <?php 
-	session_start();
+	
     error_reporting(0);
+    session_start();
 	include('../01header.php'); 
 ?>
 
@@ -35,8 +36,13 @@
 
                     $checked_arr = explode(",",$row['menu']);
 
-                  
+                  $_SESSION['category_id'] = $row['category_id'];
                 ?>
+
+
+                <form method="post" action="detail_add.php" enctype="multipart/form-data">
+
+                  <input type="hidden" name="id" value="<?php echo $row['food_id'];?>">
                 
                 	<img src="../admin/cover/<?php echo $row['cover'] ?>" width="400">
          
@@ -80,5 +86,11 @@
                 ?>
 
         
+              <div class="d-grid gap-2 col-4 mx-auto">
+                <input type="submit" name="submit" value="Order" class="btn btn-danger" /> 
 
-                <a href="sub_list.php?id=<?php echo $cat_id ?>" >Back</a>
+                </div>
+             
+              </form>
+               <a href="sub_list.php?id=<?php echo $cat_id ?>" >Back</a>
+                

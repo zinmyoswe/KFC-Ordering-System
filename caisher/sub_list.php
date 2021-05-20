@@ -2,10 +2,40 @@
 	session_start();
     error_reporting(0);
 	include('../01header.php'); 
+  include('nav.php');
+  $s = $_GET['s'];
 ?>
 
 <?php echo $_SESSION['order_type_name'] ?>
 <?php echo $_SESSION['firstname'] ?>
+
+<?php if($s == 's52810gy9'){ ?>
+<script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+             <script type="text/javascript">
+            
+
+              const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 1800,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Successfully added to cart'
+}).then(function() {
+            window.location = "sub_list.php";
+        });     
+          </script>
+<?php }?>
 
 
 

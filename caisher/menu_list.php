@@ -1,6 +1,8 @@
 <?php 
 	session_start();
+	error_reporting(0);
 	include('../01header.php'); 
+	include('nav.php');
 ?>
 <?php
  include("../confs/config.php"); 
