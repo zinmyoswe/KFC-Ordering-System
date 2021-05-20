@@ -56,13 +56,19 @@ if($result){
       case "remove":
       $_SESSION['cart'][$food_id]--;
       if($_SESSION['cart'][$food_id] == 0)
-        unset($_SESSION['cart'][$food_id]);
+        unset($_SESSION['cart'][$food_id]); 
         break;
 
 
 
     }
   }
+}
+
+if($_SESSION['cart'][$food_id] == 0){
+  $email = $_SESSION['firstname'];
+  $sql = "DELETE FROM cart WHERE staff='$email' and food_id='$food_id'";
+  $run = mysqli_query($conn,$sql);
 }
 
 

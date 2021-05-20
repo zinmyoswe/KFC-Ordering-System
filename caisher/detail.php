@@ -78,8 +78,8 @@
 	      
 	      $checked = "";
 	      if(in_array($language,$checked_arr)){
-	        $checked = "checked";
-	        echo '<input type="radio" class="form-check-input" name="lang" value="'.$language.'" '.$checked.' id="lang'.$language.'"> '.$language.' <br/>';
+
+	        echo '<input type="radio" class="form-check-input" name="lang" value="'.$language.'"  id="lang'.$language.'"> '.$language.' <br/>';
 	      }
 	   
 	  	}

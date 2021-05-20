@@ -246,7 +246,11 @@ Toast.fire({
         }
 
         else {
+
+   
+
           echo "<div class='alert alert-dark'><span class='fa fa-exclamation'> </span> You have no items in cart</div><br>
+
           <a href='menu_list.php' style='margin-right: 8px' class='btn btn-dark'>Continue Shopping</a>
           ";
         }
