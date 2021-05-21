@@ -11,7 +11,7 @@
 
 <style type="text/css">
 	a {
-    color: #0d6efd;
+    color: #000;
     text-decoration: none;
 }
 </style>
@@ -175,12 +175,44 @@ Toast.fire({
              
              	}
 
-                echo '<p>';
-                echo '<a href="" class="btn btn-link">Edit</a>';
+          
+            
+
+                echo'
+
+                <button data-id='.$pp_id.' class="userinfo btn btn-link">Edit</button>
+
+               <!-- Modal -->
+            <div class="modal fade" id="empModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+                  <form method="post" action="cart-update.php">
+                        <div class="modal-body">
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                           <input type="submit" value="Update" class="btn btn-outline-primary">
+                        </div>
+                        </form>
+                    </div>
+                  
+                </div>
+            </div>
+
+            <!-- Modal End-->
+                ';
                 echo '<a href="delete-single-cart.php?id='.$food_id.'" 
                 class="btn btn-link">Delete</a>';
-                 echo '<a href="" class="btn btn-link">Move To Wishlist</a>';
-                echo '</p>';
+                 
+                
               
        
                 echo '</div>';
@@ -294,3 +326,32 @@ Toast.fire({
 
 </div><!--  col-lg-9 col-sm-6 col-xs-12 end -->
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  <script type='text/javascript'>
+            $(document).ready(function(){
+
+                $('.userinfo').click(function(){
+                   
+                    var food_id = $(this).data('id');
+
+                    // AJAX request
+                    $.ajax({
+                        url: 'cartedit_ajaxfile.php',
+                        type: 'post',
+                        data: {food_id: food_id},
+                        success: function(response){ 
+                            // Add response in Modal body
+                            $('.modal-body').html(response); 
+
+                            // Display Modal
+                            $('#empModal').modal('show'); 
+                        }
+                    });
+                });
+            });
+            </script>
+
+<?php include('../02footer.php'); ?>
